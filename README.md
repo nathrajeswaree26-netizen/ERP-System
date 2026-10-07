@@ -1,52 +1,62 @@
-🚀 Fundsroom ERP System
-Full-Stack Enterprise Resource Planning Application
 
-Fundsroom ERP is a full-stack web application designed to manage the complete sales, customer, inventory, and dispatch workflow of an organization from a centralized platform.
+# 🔍 Fundsroom ERP System
+
+### Full-Stack Enterprise Resource Planning Application
+
+Fundsroom ERP is a full-stack web application developed to manage the complete **customer, sales, inventory, and dispatch workflow** of an organization through a centralized ERP platform.
 
 The system connects the complete business process:
 
-Customer → Enquiry → Quotation → Sales Order → Inventory Reservation → Dispatch
+**Customer → Enquiry → Quotation → Sales Order → Inventory Reservation → Dispatch**
 
-The application is developed using React.js, Node.js, Express.js, PostgreSQL, JWT, bcrypt, REST APIs, and Vite.
+The application is developed using **React.js, Node.js, Express.js, PostgreSQL, JWT, bcrypt, REST APIs, and Vite**.
 
-🎯 Project Objective
+---
 
-The objective of Fundsroom ERP is to develop a centralized ERP system that simplifies and connects different stages of the business sales process.
+## 🎯 Project Objective
 
-The system focuses on:
+The objective of Fundsroom ERP is to develop a centralized system that manages the complete business workflow from the initial customer enquiry to the final dispatch of products.
 
-Customer Management – maintain customer and contact information.
-Enquiry Management – record customer requirements and requested products.
-Quotation Management – prepare quotations with products, quantities, prices, and totals.
-Sales Order Management – convert accepted quotations into Sales Orders.
-Inventory Management – monitor available and reserved stock.
-Inventory Reservation – reserve stock when a Sales Order is confirmed.
-Dispatch Management – process confirmed orders and maintain dispatch information.
-Authentication & Authorization – control system access based on user roles.
+The system provides separate modules for:
 
-The project demonstrates how a complete business workflow can be implemented using a modern full-stack web architecture.
+1. **Customer Management** – maintaining customer and contact information.
+2. **Enquiry Management** – recording customer requirements and requested products.
+3. **Quotation Management** – preparing quotations with products, quantities, prices, and total amounts.
+4. **Sales Order Management** – converting accepted quotations into Sales Orders.
+5. **Inventory Management** – monitoring available and reserved product quantities.
+6. **Inventory Reservation** – reserving stock when a Sales Order is confirmed.
+7. **Dispatch Management** – processing confirmed orders and maintaining dispatch information.
+8. **Authentication & Authorization** – controlling access according to user roles.
 
-✨ Key Features
-🔐 JWT-based Authentication
-🔑 Role-Based Authorization
-👥 Customer Management
-📩 Customer Enquiry Management
-📄 Quotation Management
-🛒 Sales Order Management
-📦 Inventory Management
-🔒 Inventory Reservation
-🚚 Dispatch Management
-🔗 RESTful API Architecture
-🗄️ PostgreSQL Relational Database
-🔄 Transaction-Based Inventory Processing
-🔐 bcrypt Password Hashing
-🧪 Postman API Testing
-⚡ React-based Interactive Interface
-📊 Structured Business Workflow
-🔄 How Fundsroom ERP Works
+The project focuses on implementing a realistic ERP workflow where each business stage is connected with the next stage through REST APIs and PostgreSQL database relationships.
 
-The system follows a complete business workflow.
+---
 
+## ✨ Key Features
+
+* 🔐 JWT-based Authentication
+* 🔑 Role-Based Authorization
+* 👥 Customer Management
+* 📩 Customer Enquiry Management
+* 📄 Quotation Management
+* 🛒 Sales Order Management
+* 📦 Inventory Management
+* 🔒 Inventory Reservation
+* 🚚 Dispatch Management
+* 🔗 RESTful API Architecture
+* 🗄️ PostgreSQL Database
+* 🔄 Transaction-Based Inventory Processing
+* 🔐 bcrypt Password Hashing
+* 🧪 Postman API Testing
+* ⚡ React-based Frontend
+* 📊 Structured Business Workflow
+* 🛡️ Protected Backend APIs
+
+---
+
+# 🔄 Complete Business Workflow
+
+```text
 Customer
    ↓
 Customer Enquiry
@@ -64,132 +74,189 @@ Inventory Reservation
 Sales Order Confirmation
    ↓
 Dispatch
+````
 
-Each stage is connected with the next stage through database relationships and backend APIs.
+Each stage is connected through the backend business logic and relational database.
 
-🧠 Complete Business Process
-1. Customer Management
+---
 
-The workflow starts with creating a customer.
+# 👥 User Roles
 
-The system stores important customer information such as:
+## 👨‍💼 ADMIN
 
-Company Name
-Contact Person
-Email
-Phone Number
-Address
-Creation Date
+The Admin manages important operational activities.
 
-Each customer receives a unique database ID that is used by other modules.
+Admin can:
 
-Customers can later be associated with:
+* View business records
+* View inventory
+* Confirm Sales Orders
+* Reserve inventory
+* Process dispatches
+* Manage operational activities
 
-Enquiries → Quotations → Sales Orders
+Sales Order confirmation is restricted to the Admin role because confirmation directly affects inventory.
 
-2. Enquiry Management
+---
 
-After creating a customer, a Sales User can create an enquiry based on the customer's requirements.
+## 👩‍💼 SALES_USER
+
+The Sales User handles customer and sales-related operations.
+
+Sales User can:
+
+* Create customers
+* Create enquiries
+* Create quotations
+* Create Sales Orders
+* View inventory availability
+* Manage sales-related information
+
+Restricted operations such as Sales Order confirmation are protected by backend role authorization.
+
+---
+
+# 🧠 How the ERP System Works
+
+## 1️⃣ Customer Management
+
+The workflow starts by creating a customer.
+
+The system stores:
+
+* Company Name
+* Contact Person
+* Email
+* Phone Number
+* Address
+* Creation Date
+
+Each customer receives a unique ID and can later be associated with enquiries, quotations, and Sales Orders.
+
+---
+
+## 2️⃣ Enquiry Management
+
+A Sales User can create an enquiry based on customer requirements.
 
 An enquiry contains:
 
-Customer
-Required products
-Product quantities
-Enquiry status
-Created-by user
-Creation date
+* Customer
+* Required products
+* Product quantities
+* Enquiry status
+* Created-by user
+* Creation date
 
 A single enquiry can contain multiple products.
 
 Example:
 
+```text
 Customer: ABC Industries
 
 Enquiry:
-    Industrial Motor     → 5 units
-    Hydraulic Pump       → 2 units
-    Steel Valve          → 10 units
+Industrial Motor  → 5 units
+Hydraulic Pump    → 2 units
+Steel Valve       → 10 units
+```
 
-The enquiry information is stored in PostgreSQL using separate enquiry and enquiry-item records.
+The enquiry and its products are stored using related PostgreSQL tables.
 
-3. Quotation Management
+---
+
+## 3️⃣ Quotation Management
 
 The enquiry can be converted into a quotation.
 
-The quotation contains the commercial information required for the customer.
+A quotation contains:
 
-Each quotation can contain:
+* Customer
+* Products
+* Quantity
+* Unit Price
+* Total Price
+* Total Amount
+* Quotation Status
+* Created-by User
+* Creation Date
 
-Customer
-Products
-Quantity
-Unit Price
-Total Price
-Total Amount
-Quotation Status
-Created-by User
-Creation Date
+Example:
 
-For example:
-
+```text
 Industrial Motor
 Quantity: 5
 Unit Price: ₹25,000
 Total: ₹1,25,000
+```
 
-The quotation can contain multiple quotation items.
+Multiple products can be included in a quotation.
 
-4. Sales Order Management
+---
 
-When a quotation is accepted, it can be converted into a Sales Order.
+## 4️⃣ Sales Order Management
+
+After a quotation is accepted, it can be converted into a Sales Order.
 
 The Sales Order maintains:
 
-Sales Order ID
-Quotation Reference
-Customer
-Products
-Quantities
-Unit Prices
-Total Amount
-Order Status
+* Sales Order ID
+* Quotation Reference
+* Customer
+* Products
+* Quantities
+* Unit Prices
+* Total Amount
+* Order Status
 
-The initial status of the order is:
+The initial order status is:
 
+```text
 PENDING_CONFIRMATION
+```
 
-The order must then be confirmed by an authorized Admin.
+The Sales Order must then be confirmed by an authorized Admin.
 
-📦 Inventory Management
+---
 
-Inventory is one of the important components of the ERP system.
+# 📦 Inventory Management
 
-The inventory module maintains two important quantities:
+Inventory is one of the core modules of the ERP system.
 
+The system maintains:
+
+```text
 Available Quantity
 Reserved Quantity
+```
 
 For example:
 
+```text
 Industrial Motor
 
 Available: 50
 Reserved: 0
+```
 
-If a Sales Order requires 5 units and is confirmed:
+If an order requires 5 units and the Admin confirms the order:
 
+```text
 Available: 45
 Reserved: 5
+```
 
-The 5 reserved units are no longer available for another order.
+The 5 reserved units are no longer available for another Sales Order.
 
-This helps prevent multiple orders from using the same stock.
+This helps prevent the same inventory from being allocated to multiple orders.
 
-🔒 Inventory Reservation Process
+---
 
-When an Admin confirms a Sales Order, the backend performs an inventory verification process.
+# 🔒 Inventory Reservation
 
+When an Admin confirms a Sales Order, the backend performs an inventory availability check.
+
+```text
 Sales Order Confirmation
           ↓
 Find Required Products
@@ -209,111 +276,134 @@ Order            ↓
           Create Reservation
                   ↓
           Confirm Sales Order
+```
 
-If sufficient inventory is not available, the order is not confirmed.
+If sufficient inventory is unavailable, the Sales Order is not confirmed.
 
 Example:
 
+```text
 Available Stock: 10
 Required Stock: 15
 
 Result:
 Insufficient inventory
 Sales Order cannot be confirmed
-🔐 PostgreSQL Transaction Management
+```
 
-Inventory operations are performed using PostgreSQL transactions.
+---
 
-The confirmation process performs multiple database operations together:
+# 🔐 Transaction-Safe Inventory Processing
 
-Begin transaction.
-Lock inventory records.
-Check available quantity.
-Update available quantity.
-Update reserved quantity.
-Create inventory reservation records.
-Update Sales Order status.
-Commit transaction.
+Inventory confirmation is implemented using PostgreSQL transactions.
+
+The backend performs the following operations as one transaction:
+
+1. Start transaction.
+2. Lock required inventory records.
+3. Check available quantity.
+4. Validate stock.
+5. Decrease available quantity.
+6. Increase reserved quantity.
+7. Create inventory reservation records.
+8. Update Sales Order status.
+9. Commit transaction.
 
 If any operation fails, the transaction is rolled back.
 
-This prevents situations where one part of the inventory operation succeeds while another part fails.
+This prevents partial database updates and maintains inventory consistency.
 
-🔒 Row-Level Locking
+---
 
-The inventory confirmation process uses PostgreSQL row-level locking through:
+# 🔒 PostgreSQL Row-Level Locking
 
+The inventory confirmation process uses PostgreSQL:
+
+```text
 FOR UPDATE
+```
 
-This locks the relevant inventory record while the transaction is being processed.
+This locks the selected inventory rows while the transaction is running.
 
-It helps protect inventory from inconsistent updates when multiple requests attempt to reserve the same product simultaneously.
+It helps prevent conflicting inventory updates when multiple Sales Orders attempt to reserve the same product at the same time.
 
-This is particularly important in an ERP system where multiple Sales Orders may require the same inventory.
+This is an important part of making the inventory workflow reliable in a multi-user ERP environment.
 
-🚚 Dispatch Management
+---
 
-After an order has been confirmed and inventory has been reserved, the order can be dispatched.
+# 🚚 Dispatch Management
+
+After a Sales Order has been confirmed and inventory has been reserved, the order can be dispatched.
 
 The dispatch module maintains:
 
-Sales Order
-Dispatch Date
-Tracking Number
-Dispatch Status
-Creation Date
+* Sales Order
+* Dispatch Date
+* Tracking Number
+* Dispatch Status
+* Creation Date
 
 Example:
 
+```text
 Sales Order: SO-001
 Tracking Number: FR-2026-0001
 Status: DISPATCHED
+```
 
-During dispatch, the system processes the reserved inventory and updates the Sales Order status.
+The order lifecycle is:
 
-The final workflow becomes:
-
+```text
 PENDING_CONFIRMATION
         ↓
 CONFIRMED
         ↓
 DISPATCHED
-👥 User Roles
+```
 
-The system supports two primary user roles.
+After dispatch, the reserved quantity is released from the reserved inventory.
 
-👨‍💼 ADMIN
+---
 
-The Admin has access to restricted operational activities.
+# 📊 Inventory Example
 
-Admin can:
+The project uses sample industrial products for demonstrating the ERP workflow.
 
-View business records
-View inventory
-Confirm Sales Orders
-Reserve inventory
-Process dispatches
-Perform administrative operations
-👩‍💼 SALES_USER
+| Product          | Initial Available Stock |
+| ---------------- | ----------------------: |
+| Industrial Motor |                      50 |
+| Hydraulic Pump   |                      30 |
+| Steel Valve      |                     100 |
 
-The Sales User handles customer and sales activities.
+Example lifecycle:
 
-Sales User can:
+```text
+Industrial Motor
 
-Create customers
-Create enquiries
-Create quotations
-Create Sales Orders
-View inventory availability
-Manage sales-related information
+Initial:
+Available = 50
+Reserved  = 0
 
-Restricted operations such as Sales Order confirmation are protected by backend role authorization.
+After Order Confirmation:
+Available = 45
+Reserved  = 5
 
-🔐 Authentication & Authorization
+After Dispatch:
+Available = 45
+Reserved  = 0
+```
 
-The application implements authentication using JWT (JSON Web Token).
+This demonstrates how inventory changes throughout the Sales Order lifecycle.
 
-Login Process
+---
+
+# 🔐 Authentication & Authorization
+
+The application uses **JWT authentication** and **bcrypt password hashing**.
+
+### Login Flow
+
+```text
 Email + Password
        ↓
 Backend Validation
@@ -325,72 +415,84 @@ bcrypt Password Verification
 JWT Token Generation
        ↓
 Authenticated API Requests
+```
 
 The JWT contains information such as:
 
-User ID
-Email
-Role
+* User ID
+* Email
+* Role
 
-The token is then used to access protected APIs.
+The token is used to authenticate protected API requests.
 
-🔑 Role-Based Authorization
+---
 
-Authentication and authorization are handled separately.
+# 🔑 Role-Based Authorization
 
-Authentication verifies the identity of the user.
+The system separates authentication from authorization.
 
-Authorization verifies whether the user has permission to perform an operation.
+**Authentication** verifies who the user is.
 
-For example:
+**Authorization** verifies what the user is allowed to do.
 
+Example:
+
+```text
 SALES_USER
     ↓
 Create Sales Order
     ↓
 Allowed
+```
 
-But:
-
+```text
 SALES_USER
     ↓
 Confirm Sales Order
     ↓
 Denied
+```
 
-Whereas:
-
+```text
 ADMIN
     ↓
 Confirm Sales Order
     ↓
 Allowed
+```
 
-This authorization is enforced on the backend through middleware.
+Role authorization is enforced on the backend using middleware.
 
-🗄️ Database Design
+---
 
-Fundsroom ERP uses PostgreSQL as its primary database.
+# 🗄️ Database
 
-The database contains 12 main tables.
+Fundsroom ERP uses **PostgreSQL** as its relational database.
 
-Table	Purpose
-users	User accounts and roles
-customers	Customer information
-products	Product details
-inventory	Available and reserved stock
-enquiries	Customer enquiries
-enquiry_items	Products in enquiries
-quotations	Customer quotations
-quotation_items	Products in quotations
-sales_orders	Sales Orders
-sales_order_items	Products in Sales Orders
-inventory_reservations	Reserved inventory
-dispatches	Dispatch information
-🔗 Database Relationships
+The system contains 12 main tables:
 
-The major relationships are structured as:
+| Table                    | Purpose                      |
+| ------------------------ | ---------------------------- |
+| `users`                  | User accounts and roles      |
+| `customers`              | Customer information         |
+| `products`               | Product details              |
+| `inventory`              | Available and reserved stock |
+| `enquiries`              | Customer enquiries           |
+| `enquiry_items`          | Products in enquiries        |
+| `quotations`             | Customer quotations          |
+| `quotation_items`        | Products in quotations       |
+| `sales_orders`           | Sales Orders                 |
+| `sales_order_items`      | Products in Sales Orders     |
+| `inventory_reservations` | Reserved inventory           |
+| `dispatches`             | Dispatch information         |
 
+---
+
+# 🔗 Database Relationships
+
+The major relationships are:
+
+```text
 Customer
    ↓
 Enquiry
@@ -398,6 +500,9 @@ Enquiry
 Enquiry Items
    ↓
 Products
+```
+
+```text
 Customer
    ↓
 Quotation
@@ -405,6 +510,9 @@ Quotation
 Quotation Items
    ↓
 Products
+```
+
+```text
 Quotation
    ↓
 Sales Order
@@ -412,116 +520,160 @@ Sales Order
 Sales Order Items
    ↓
 Products
+```
+
+```text
 Products
    ↓
 Inventory
    ↓
 Inventory Reservations
+```
+
+```text
 Sales Order
    ↓
 Dispatch
+```
 
-Primary keys and foreign keys maintain relationships between these entities.
+Primary keys and foreign keys maintain the relationships between different ERP entities.
 
-🏗️ System Architecture
+---
+
+# 🏗️ System Architecture
 
 The application follows a client-server architecture.
 
+```text
                    ┌──────────────────────┐
                    │    React Frontend    │
-                   │      Vite            │
+                   │       Vite           │
                    └──────────┬───────────┘
                               │
                               │ Axios / REST API
-                              ▼
+                              ↓
                    ┌──────────────────────┐
                    │   Express.js API     │
                    │    Node.js Backend   │
                    └──────────┬───────────┘
                               │
                               │ PostgreSQL Queries
-                              ▼
+                              ↓
                    ┌──────────────────────┐
                    │      PostgreSQL      │
-                   │       Database      │
+                   │       Database       │
                    └──────────────────────┘
+```
 
-The frontend handles user interaction and presentation.
+### Frontend
 
-The backend handles:
+The React frontend handles:
 
-Business logic
-Authentication
-Authorization
-Validation
-API requests
-Database operations
-Inventory transactions
+* User interface
+* Forms
+* Navigation
+* API communication
+* Data display
+* User interactions
+* Error messages
 
-PostgreSQL handles persistent storage and relational data management.
+### Backend
 
-🌐 Frontend
+The Node.js and Express.js backend handles:
 
-The frontend is developed using React.js and Vite.
+* REST APIs
+* Business logic
+* Authentication
+* Authorization
+* Validation
+* Database operations
+* Inventory processing
+* Transactions
 
-The application provides separate interfaces for:
+### Database
 
-Login
-Dashboard
-Customers
-Enquiries
-Quotations
-Sales Orders
-Inventory
-Dispatches
+PostgreSQL handles:
 
-The frontend communicates with the backend using Axios.
+* Persistent data
+* Relationships
+* Constraints
+* Inventory records
+* Business transactions
 
-JWT authentication tokens are automatically attached to protected API requests.
+---
 
-⚙️ Backend
+# 🌐 Frontend
+
+The frontend is developed using **React.js and Vite**.
+
+The application contains interfaces for:
+
+* Login
+* Dashboard
+* Customers
+* Enquiries
+* Quotations
+* Sales Orders
+* Inventory
+* Dispatches
+
+Axios is used to communicate between the React application and backend APIs.
+
+Authentication tokens are automatically attached to protected requests.
+
+---
+
+# ⚙️ Backend
 
 The backend is developed using:
 
-Node.js
-Express.js
-PostgreSQL
-JWT
-bcryptjs
+* Node.js
+* Express.js
+* PostgreSQL
+* JWT
+* bcryptjs
 
-The backend follows a modular structure with:
+The backend is organized into:
 
-Routes
-Controllers
-Middleware
-Database configuration
-Services
+* Routes
+* Controllers
+* Middleware
+* Database configuration
+* Services
 
-This structure separates responsibilities and makes the backend easier to maintain.
+This modular structure keeps authentication, business logic, authorization, and database operations organized.
 
-🔗 REST API
+---
 
-The backend exposes RESTful API modules.
+# 🔗 REST API
 
-Module	Endpoint
-Authentication	/api/auth
-Customers	/api/customers
-Enquiries	/api/enquiries
-Quotations	/api/quotations
-Sales Orders	/api/sales-orders
-Inventory	/api/inventory
-Dispatches	/api/dispatches
+The backend provides REST API modules for the major ERP operations.
+
+| Module         | Endpoint            |
+| -------------- | ------------------- |
+| Authentication | `/api/auth`         |
+| Customers      | `/api/customers`    |
+| Enquiries      | `/api/enquiries`    |
+| Quotations     | `/api/quotations`   |
+| Sales Orders   | `/api/sales-orders` |
+| Inventory      | `/api/inventory`    |
+| Dispatches     | `/api/dispatches`   |
 
 The APIs support operations such as:
 
-Create
-Read
-Update
-Status management
-Confirmation
-Reservation
-Dispatch processing
-📂 Project Structure
+* Create
+* Retrieve
+* Update
+* Status management
+* Sales Order confirmation
+* Inventory reservation
+* Dispatch processing
+
+---
+
+# 📁 Project Structure
+
+```text
 ERP-System/
 │
 ├── backend/
@@ -553,222 +705,129 @@ ERP-System/
 │
 ├── .gitignore
 └── README.md
-🛠️ Technology Stack
-Frontend
-React.js
-JavaScript
-React Router
-Axios
-HTML5
-CSS3
-Vite
-Backend
-Node.js
-Express.js
-JavaScript
-REST APIs
-JWT
-bcryptjs
-Database
-PostgreSQL
-pgAdmin
-SQL
-Testing & Development
-Postman
-Git
-GitHub
-Visual Studio Code
-🧪 API Testing
+```
 
-The backend APIs were tested using Postman.
+---
 
-The testing process covered:
+# 🛠️ Technology Stack
 
-User registration
-User login
-JWT authentication
-Role authorization
-Customer creation
-Enquiry creation
-Quotation creation
-Sales Order creation
-Sales Order confirmation
-Inventory availability
-Inventory reservation
-Insufficient stock validation
-Dispatch creation
+## Frontend
 
-Both successful and failure scenarios were tested.
+* React.js
+* JavaScript
+* React Router
+* Axios
+* HTML5
+* CSS3
+* Vite
 
-⚠️ Error Handling
+## Backend
 
-The backend handles different types of application errors.
+* Node.js
+* Express.js
+* JavaScript
+* REST APIs
+* JWT
+* bcryptjs
 
-Examples include:
+## Database
 
-Missing required fields
-Invalid credentials
-Duplicate users
-Invalid roles
-Unauthorized access
-Invalid or expired JWT
-Insufficient inventory
-Invalid Sales Order status
-Database errors
-Invalid API requests
+* PostgreSQL
+* pgAdmin
+* SQL
 
-The frontend displays appropriate error messages based on backend responses.
+## Development & Testing
 
-🔒 Security Implementation
+* Git
+* GitHub
+* Postman
+* Visual Studio Code
 
-The application implements multiple security mechanisms.
+---
 
-Password Hashing
+# 🧪 API Testing
+
+The backend APIs were tested using **Postman**.
+
+Testing covered:
+
+* User registration
+* User login
+* JWT authentication
+* Role authorization
+* Customer creation
+* Enquiry creation
+* Quotation creation
+* Sales Order creation
+* Sales Order confirmation
+* Inventory availability
+* Inventory reservation
+* Insufficient stock validation
+* Dispatch creation
+
+Both successful and failure scenarios were tested to verify the application workflow.
+
+---
+
+# ⚠️ Error Handling
+
+The system handles common application and business errors, including:
+
+* Missing required fields
+* Invalid login credentials
+* Duplicate users
+* Invalid roles
+* Missing authentication token
+* Invalid or expired JWT
+* Unauthorized operations
+* Insufficient inventory
+* Invalid Sales Order status
+* Database errors
+* Invalid API requests
+
+The backend returns appropriate HTTP status codes and messages, while the frontend displays relevant feedback to users.
+
+---
+
+# 🔒 Security
+
+The application implements several security practices.
+
+### Password Security
 
 Passwords are hashed using bcrypt before being stored in PostgreSQL.
 
-JWT Authentication
+### JWT Authentication
 
-JWT tokens are generated after successful authentication and used for protected API requests.
+JWT tokens are generated after successful login and used for protected requests.
 
-Role Authorization
+### Role Authorization
 
-Backend middleware validates whether the authenticated user has the required role.
+Backend middleware verifies whether the authenticated user has permission to access restricted operations.
 
-Environment Variables
+### Environment Variables
 
-Database credentials and JWT secrets are maintained through environment variables rather than being hardcoded into the application.
+Sensitive configuration such as database credentials and JWT secrets are stored in environment variables.
 
-Parameterized Queries
+### Parameterized SQL Queries
 
-PostgreSQL parameterized queries are used for database operations.
+Database queries use parameterized values to reduce SQL injection risks.
 
-Protected APIs
+### Protected APIs
 
-Business APIs require valid authentication tokens.
+Business operations require valid authentication where appropriate.
 
-📊 Sample Inventory
+---
 
-The project uses sample industrial products for demonstrating the ERP workflow.
+# 📈 End-to-End Example
 
-Product	Initial Stock
-Industrial Motor	50
-Hydraulic Pump	30
-Steel Valve	100
+A complete business transaction works as follows:
 
-Example inventory lifecycle:
-
-Industrial Motor
-
-Initial:
-Available = 50
-Reserved  = 0
-
-After Order Confirmation:
-Available = 45
-Reserved  = 5
-
-After Dispatch:
-Available = 45
-Reserved  = 0
-💻 Local Development
-Prerequisites
-
-The following software is required:
-
-Node.js
-npm
-PostgreSQL
-pgAdmin
-Git
-Visual Studio Code
-Database
-
-Create the PostgreSQL database:
-
-erp_db
-
-Configure the database connection and JWT secret using the backend environment variables.
-
-Backend
-
-The backend runs on:
-
-http://localhost:5000
-
-The backend provides the REST API used by the React frontend.
-
-Frontend
-
-The React development server runs on:
-
-http://localhost:5173
-
-The frontend communicates with the backend through the REST API.
-
-🚀 Deployment Architecture
-
-The project is structured so that the frontend and backend can be deployed independently.
-
-React Frontend
-      ↓
-Frontend Hosting
-      ↓
-Express / Node.js Backend
-      ↓
-PostgreSQL Database
-
-Environment variables can be configured separately for development and production environments.
-
-📌 Key Technical Highlights
-1. Full-Stack Development
-
-The project combines frontend, backend, database, authentication, and business logic into one complete application.
-
-2. End-to-End Business Workflow
-
-The application connects the complete process from customer enquiry to dispatch.
-
-3. Secure Authentication
-
-JWT and bcrypt are used for secure authentication and password management.
-
-4. Role-Based Access
-
-Different users receive different permissions according to their roles.
-
-5. Inventory Reservation
-
-Inventory is reserved only after successful Sales Order confirmation.
-
-6. Transaction Management
-
-Inventory-related operations are executed using PostgreSQL transactions.
-
-7. Row-Level Locking
-
-FOR UPDATE is used to prevent conflicting inventory updates.
-
-8. REST API Architecture
-
-The frontend and backend communicate through structured REST APIs.
-
-9. Relational Database
-
-PostgreSQL maintains structured relationships between customers, products, orders, inventory, and dispatches.
-
-10. API Testing
-
-Postman was used to test and validate backend functionality.
-
-📈 Example End-to-End Scenario
-
-A typical business transaction in the system works as follows:
-
+```text
 Customer
 "ABC Industries"
         ↓
-Creates Enquiry
+Customer Enquiry
         ↓
 Requests 5 Industrial Motors
         ↓
@@ -794,69 +853,89 @@ Order Dispatched
 Reserved = 0
         ↓
 Sales Order Completed
+```
 
-This demonstrates how different ERP modules work together as one integrated workflow.
+This demonstrates how all major modules work together as one integrated ERP system.
 
-🔮 Future Enhancements
+---
 
-The system can be extended with:
+# 📌 Key Technical Highlights
 
-📊 Advanced dashboard analytics
-📈 Sales reports
-📦 Inventory reports
-🔎 Advanced search and filtering
-📄 PDF quotation generation
-📧 Email notifications
-📝 Audit logs
-🧪 Automated unit and integration testing
-🐳 Docker containerization
-☁️ Cloud deployment
-📱 Improved mobile responsiveness
-📊 Business intelligence and reporting
-🎓 Project Significance
+* Complete **Customer-to-Dispatch workflow**
+* Full-stack **React + Node.js + Express.js + PostgreSQL architecture**
+* JWT-based authentication
+* bcrypt password hashing
+* Role-based backend authorization
+* Relational PostgreSQL database
+* Primary and foreign key relationships
+* RESTful API development
+* Inventory availability validation
+* Transaction-based inventory reservation
+* PostgreSQL row-level locking using `FOR UPDATE`
+* Insufficient stock validation
+* Dispatch processing
+* Postman API testing
+* Git and GitHub version control
 
-Fundsroom ERP demonstrates practical implementation of full-stack software engineering concepts.
+---
 
-The project combines:
+# 🚀 Future Enhancements
 
-Frontend Development
-Backend Development
-REST API Development
-Database Design
-Authentication
-Authorization
-Business Logic
-Transaction Management
-Inventory Management
-API Testing
-Version Control
+Possible future improvements include:
 
-Rather than implementing each feature independently, the project connects them into a complete business workflow.
+* 📊 Advanced dashboard analytics
+* 📈 Sales performance reports
+* 📦 Detailed inventory reports
+* 🔎 Advanced search and filtering
+* 📄 PDF quotation generation
+* 📧 Email notifications
+* 📝 Audit logs
+* 🧪 Automated unit and integration testing
+* 🐳 Docker containerization
+* ☁️ Cloud deployment
+* 📱 Improved mobile responsiveness
+* 📊 Advanced business intelligence and reporting
 
-👩‍💻 Developer
-Rajeswaree Nath
+---
 
-B.Tech – Computer Science & Technology
+# 🎓 Project Significance
 
-Nalanda Institute of Technology, Bhubaneswar
-BPUT
+Fundsroom ERP demonstrates practical implementation of full-stack software engineering concepts by combining frontend development, backend development, database management, authentication, authorization, business logic, inventory management, transaction processing, and API testing into one complete application.
 
-Areas of Interest
-Software Engineering
-Full-Stack Development
-Java & Python
-Artificial Intelligence
-Machine Learning
-Backend Development
-Database Systems
-⭐ Project Summary
+The project goes beyond simple CRUD functionality by implementing a connected business workflow where an enquiry can lead to a quotation, an accepted quotation can become a Sales Order, the Sales Order can reserve inventory, and the confirmed order can finally be dispatched.
 
-Fundsroom ERP System is a full-stack ERP application that manages the complete workflow from Customer Enquiry to Product Dispatch.
+The inventory reservation and transaction mechanism provides an important real-world component by ensuring that stock remains consistent during order processing.
 
-The system provides a centralized platform for managing:
+---
 
-Customers → Enquiries → Quotations → Sales Orders → Inventory → Dispatches
+# 👩‍💻 Developer
 
-It demonstrates practical use of React.js, Node.js, Express.js, PostgreSQL, REST APIs, JWT authentication, bcrypt, role-based authorization, database relationships, PostgreSQL transactions, inventory reservation, and API testing.
+## Rajeswaree Nath
 
-The project focuses on building a realistic, secure, and transaction-safe ERP workflow rather than implementing isolated CRUD operations.
+**B.Tech – Computer Science & Technology**
+**Nalanda Institute of Technology, Bhubaneswar | BPUT**
+
+### Areas of Interest
+
+* Software Engineering
+* Full-Stack Development
+* Java & Python
+* Artificial Intelligence
+* Machine Learning
+* Backend Development
+* Database Systems
+
+---
+
+# ⭐ Project Summary
+
+**Fundsroom ERP System** is a full-stack ERP application designed to manage the complete business workflow from:
+
+**Customer → Enquiry → Quotation → Sales Order → Inventory → Dispatch**
+
+The project demonstrates practical experience with **React.js, Node.js, Express.js, PostgreSQL, REST APIs, JWT authentication, bcrypt, role-based authorization, relational database design, transaction management, inventory reservation, row-level locking, API testing, Git, and GitHub**.
+
+The primary focus of the project is to build a realistic, secure, structured, and transaction-safe ERP workflow that connects customer management, sales operations, inventory management, and dispatch processing into one integrated application.
+
+```
+```
